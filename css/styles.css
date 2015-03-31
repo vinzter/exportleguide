@@ -1,0 +1,43 @@
+table.stats {
+	text-align: center;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+	font-weight: normal;
+	font-size: 11px;
+	color: #fff;
+	width: 280px;
+	background-color: #268CCD;
+	border: 0px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+table.stats td {
+	background-color: #FFF2BA;
+	color: #000;
+	padding: 4px;
+	text-align: left;
+	border: 1px #268CCD solid;
+}
+table.stats td.hed {
+	background-color: #268CCD;
+	color: #fff;
+	padding: 4px;
+	text-align: left;
+	border-bottom: 2px #268CCD solid;
+	font-size: 12px;
+	font-weight: bold;
+} 
+.links a {
+	color: #4444FF;
+	text-decoration: underline;
+}
+.level1 {
+	font-weight:bold;
+}
+.exportleguide {
+	font-family: Arial,Verdana,Helvetica,sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+.alert {
+	color: #FF0000;
+}

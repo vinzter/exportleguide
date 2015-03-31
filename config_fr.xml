@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>exportleguide</name>
+	<displayName><![CDATA[Export LeGuide]]></displayName>
+	<version><![CDATA[1.61b]]></version>
+	<description><![CDATA[Exportez vos produits vers LeGuide, Shopmania, Tigoon, Kelkoo, Shoppydoo, Shopzilla, Shopping !]]></description>
+	<author><![CDATA[Communaut&eacute;]]></author>
+	<tab><![CDATA[smart_shopping]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>

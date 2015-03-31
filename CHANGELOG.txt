@@ -1,0 +1,239 @@
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//       Export LeGuide                       	                                                                                        //
+	//       Exports de catalogue vers comparateurs    	                                                                                    //
+	//       Module original de M1bs largement amélioré grâce aux contributeurs du forum Prestashop                                         //
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Discussion et archives: https://www.prestashop.com/forums/topic/22501-module-prestashop-exportleguidecom-export-csv-pour-exportleguide-et-autres-comparateurs/
+
+A FAIRE :
+- Changer le mode de connexion SQL mysql_ vers du mysqli_ ou du PDO
+- Corriger le fichier catalogue "Shopping" qui contient des erreurs
+- Vérifier que la désinstallation s'effectue correctement
+- L'export perd les virgules que l'on insère dans la description du produit à cause du formatage pour les fichiers csv
+- L'export ne perd pas les point virgules que l'on insère dans la description du produit pouvant causer des problèmes dans les fichiers csv
+- Créer un fichier index.php en même temps que la création du répertoire personalisé des exports
+
+CHANGELOG :
+v.161
+Vinzter - 30/03/2015
+- Nettoyage des fichiers et du code
+- Correction du bug "Description Longue" qui renvoyait un champ vide (problème de requete sql)
+- Correction du bug d'affichage des frais de port (problème lié à une erreur de condition sur les frais de port gratuits)
+- Ajout aux frais de port de la taxe configurée dans tranporteurs
+- Ajout d'un fichier index.php renvoyant à la racine du site dans chaque dossier
+- Changement de "$destFilename = $fullDestDir.$catalogFilename;" en "$destFilename = $fullDestDir.'/'.$catalogFilename;"
+- Ajout de @unlink($fullfilename) pour supprimer le fichier catalogue du répertoire exports par défaut quand on créé un répertoire d'export personalisé.
+- Correction de quelques autres erreurs de syntaxes
+- Correction d'une erreur de variable dans le fichier de catalogue shoppydoo
+- Correction d'une erreur d'appel de variable de id_image lors de la génération du catalogue avec déclinaisons
+- Ajout d'un champ permettant de modifier la variable "Type d'Image" qui change selon les versions prestashop ou des paramètres personnalisés
+
+v.160
+Vinzter
+- Module renommé en ExportLeGuide pour qu'il n'y ait plus de conflit avec le module payant proposé sur addons
+
+V1.59
+- Creation fichier CHANGELOG.txt et déplacement des infos dans ce fichier au lieu de guide-script.php
+
+v1.58d
+Vinzter - 06/03/2015
+- Correction du problème d'accent lors de l'appel à la bdd dans le fichier mysql.php
+- Correction du problème de l'appel à new sur la variable $String dans le fichier fonctions.php
+- Correction du prefixe de l'appel au champ "PS_CURRENCY_DEFAULT" qui n'est pas une table et qui ne doit don pas être remplacé par "$this->ps_"
+
+V1.58c
+Jolvil - 05/03/2015
+- application des modifs de Vinzter https://www.prestashop.com/forums/topic/22501-module-prestashop-exportleguidecom-export-csv-pour-exportleguide-et-autres-comparateurs/?p=1941580
+sur 1.58b:
+- supression des occurrences "parent::" dans les fichiers contenus dans "modules/exportleguide/class/
+- code modifié pour ne plus avoir le warning "Strict Standards: mktime()"
+  dans le fichier "modules/exportleguide/class/toolsguide.php" :
+  $cronKey = md5(mktime()); par $cronKey = md5(time());
+  dans le fichier "modules/exportleguide/class/guide-script.php" :
+  $startTime = mktime(); par $startTime = time();
+- remplacement des fonctions "f_convert_text" et "f_convert_text2" dans le fichier "modules/exportleguide/class/fonctions.php" afin de ne plus utiliser la fonction ereg_replace qui est obsolète.
+- re-encodage des fichiers en UTF8 sans BOM avec notepad++
+- renommage du module qui porte le meme nom que le module Prestashop
+
+V1.58
+Fran6t - 06/05/2013
+Quelques corrections pour le rendre compatible avec prestashop 1.5.4.1
+Nouveau contenu de art_info.php trouvé sur le forum prestashop et publié par Jhonny57 auquel j'ai fais une petite modif pour le nouveau rangement des images 
+art_info.php de Johnny57 visible ici: http://www.prestashop.com/forums/index.php?/topic/22501-module-prestashop-exportleguidecom-export-csv-pour-exportleguide-et-autres-comparateurs/page__view__findpost__p__613507
+Divers corrections identifiees par marquage fran6t juste avant dans plusieurs fichiers .php
+
+V1.57
+KTechnologie.com
+Suppression de l'exclusion du produit N°1
+Utilisation des produits de niveau 1 pour la racine de l'arborescence si le niveau 0 n'existe pas
+Gestion des réductions de Prestashop 1.4
+
+V1.56
+KTechnologie.com
+Correction d'un éventuel recouvrement des fichiers temporaires lors d'une création par tranches
+Passage à jquery.treeview v1.4
+Arborescence repliée par défaut
+
+V1.55
+KTechnologie.com
+Gestion de la copie du catalogue dans un autre répertoire après sa génération
+Simplification de l'appel via cron
+Alerte si aucune catégorie sélectionnée
+
+V1.54
+KTechnologie.com
+Modification CSS
+Sauvegarde valeur option onMutuOnceaDay
+
+V1.54
+KTechnologie.com
+Correction CSS
+
+V1.53
+KTechnologie.com
+Correction CSS
+
+V1.52
+KTechnologie.com
+Ajout de la génération par tranches pour outrepasser la limitation du timeout PHP sur un serveur mutualisé
+Ajout de la gestion du paramètre 'auto' dans l'URL permettant de lancer automatiquement la génération du catalogue (à utiliser avec une tâche cron)
+Ajout de l'affichage de la date du catalogue trouvé sur le disque
+Mise en option de l'affichage du catalogue
+Séparateur définie automatiquement en fonction du catalogue
+Extension du fichier définie automatiquement en fonction du catalogue
+BUGFIX: Correction de quelques valeurs non définies
+BUGFIX: Affichage de l'arborescence correctement indentée
+BUGFIX: Prise en compte des produits de la racine
+BUGFIX: Calcul de la TVA compatible avec Prestashop 1.4
+
+V1.51 (pas de .zip pour cette version)
+KTechnologie.com - 06/01/2010
+Intégration des correctifs pppplus
+
+V1.50 (pas de .zip pour cette version)
+KTechnologie.com - 16/12/2010
+Intégration des correctifs dangee - Shopping
+
+V1.49 (pas de .zip pour cette version)
+KTechnologie.com - 15/12/2009
+Intégration des correctifs dangee - Shopzilla bis
+
+V1.48 (pas de .zip pour cette version)
+KTechnologie.com - 14/12/2009
+Intégration des correctifs de dangee - Shopzilla
+Correctifs de pppplus
+
+V1.46
+Fabien LAHAULLE - 19/11/2009
+*ajout de la gestion des doublons pour kelkoo (soluce 'pppplus')
+*fermeture du fichier généré (fclose) qui était inexistante (plus propre!)
+*forcage du mode UTF8 des fichiers générés par un fwrite ((soluce 'pppplus')
+
+V1.45
+Fabien LAHAULLE - 18/11/2009
+Pour kelkoo, remplacement de la fonction substr (tronquage) par mb_substr sinon les caractères accentués ressortent mal.
+
+V1.44
+Fabien LAHAULLE - 17/11/2009
+Tronquage à 160c (et ajout de "...")  du champ description pour Kelkoo, pour être conforme à leurs exigences
+
+V1.43
+Fabien LAHAULLE - 17/11/2009
+ajout de l'export vers le comparateur Kelkoo
+Fichiers ajoutés : catalogue_header_kelkoo.php, catalogue_kelkoo.php, catalogue_declinaisons_kelkoo.php
+Docs ajoutées : doc officielle Kelkoo ExtranetMarchandKelkoo.pdf, et un guide trouvé sur le net GuideKelkoo.pdf
+
+V1.42
+Moncler (Avi)
+Correction url compatibitlité prestashop v1.2.x
+
+V1.40
+Moncler (Avi)
+Suppression des retours chariots pour les descriptions
+Ajout du choix gratuité des frais de port
+Passage du formatage des prix en notation anglaise (number_format)
+Suppression du boutton forcer le telechargement du fichier d export
+
+V1.39
+Moncler (Avi)
+Faille de securité corrigé (merci a Inovatio)
+BUGFIX: Correction du bug de la gratuité des frais de port lorsqu les prix, seuil de prix, poids sont > 1000 (format incorrect)
+BUGFIX: Correction de la fonction Javascript 'Inverser la sélection' qui modifiais les autre parametres
+Refonte de la fonction du nettoyage du texte et suppression des precedentes maj
+
+V1.38
+Moncler (Avi) - 12/07/2009
+BUGFIX: Correction des frais de port lorsqu il n y a aucune tranche de poids definit (prix seulement)
+Prise en compte des frais de port offert par prix/poids (selon les reglages choisit dans le BO)
+BUGFIX: probleme d accent corrigé et ajout de qlq caractere non geré (a verifier et a ameliorer encore)
+
+V1.37b
+Moncler (Avi) - 12/07/2009
+BUGFIX: Correction de l’affichage et sauvegarde des valeurs (bug decrit plus haut) Disponibilité, Délai de livraison et Garantie
+BUGFIX: Correction bug inversion prix ttc-prix barre
+Refonte des fonctions de calcul de prix (simplification)
+Ajout de l’option du type de description a exporter (courte/longue)
+Ajout de l’option export des produit inactif
+
+V1.355
+Moncler (Avi)
+07/07/2009 : Remplacement de la gestion de l'url rewriting par la classe Link de prestashop
+07/07/2009 : Rajout du choix de l'exportation produit avec ou sans les declinaisons
+
+V1.36
+Jolvil - 08/07/2009
+- Utilisation de name pour le nom de produit au lieu de short description
+- ajout option O pour etat disponible pour exportleguide
+
+V1.35
+Neodreamer - 20/06/2009
+BUGFIX - correction du problème des prix barrés qui été érronés.
+
+V1.34
+Fabien LAHAULLE "fabienl" www.mariage-tranquille.fr
+02/06/2009 : BUGFIX - fonctions.php - spécification pour les montants du séparateur décimal et pas de caractère pour les milliers
+
+V1.33
+Fabien LAHAULLE
+02/06/2009 : BUGFIX - les catégories de type "1.XXXXX", ""2.YYYYY" n'étaient pas récupérées.
+30/05/2009 : ADD - ajout des docs pour shopmania, exportleguide et tigoon
+30/05/2009 : BUGFIX - correction d'un probleme de script javascript dont le chemin était incorrect, donc introuvable.
+
+V1.32
+Fabien LAHAULLE
+28/05/2009 : BUGFIX - la fonction de nettoyage de caractere separateur dans les chaines faisait planter.
+28/05/2009 : ADD - suppression du fichier csv avant de l'ouvrir.
+
+V1.31
+Fabien LAHAULLE
+27/05/2009 : nettoyage des balises <br/> et remplacement par un blanc.
+
+V1.3
+Fabien LAHAULLE
+26/05/2009 : ajout d'une liste déroulante afin de choisir un site de comparateur de prix
+             permet de définir le nom du fichier généré
+             BUGFIX : on ne ramène maintenant que les zones de transport actives, et pas toutes.
+
+V1.2
+Fabien LAHAULLE
+26/05/2009 : ajout de la section "Caractéristiques du fichier"
+             permet de donner un nom spécifique au fichier pour générer des catalogues pour différents sites
+             permet de choisir l'extension du fichier (certains sites imposent un fichier .csv)
+             permet de choisir le séparateur de champs utilisé dans le fichier généré
+            (certains sites imposent un fichier avec séparateur point-virgule par exemple)
+
+V1.0
+Fabien LAHAULLE
+25/05/2009 : modification de la fonction qui récupère l'image du produit --> ajout du critère cover=1 afin de sélectionner l'image par défaut du produit
+             fichiers modifies : art_info.php
+25/05/2009 : correction du problème de gestion des retours chariots dans les descriptions (libellés collés)
+             fichiers modifies : guide_script.php
+22/05/2009 : Mise en place de la fonction d'unicité (uniqid) pour les déclinaisons de produits
+             fichiers modifies : guide_script.php
+
+04/04/2004
+Module original réalisé par M1bs
+post d'origine: https://www.prestashop.com/forums/topic/16269-module-free-module-exportleguide-extraction-des-articles-declinaison-selon-categorie/
